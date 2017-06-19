@@ -1,0 +1,73 @@
+html, body {
+    font-size: 1em;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    height: 100vh;
+}
+
+body h1, h2, h3, main {
+    font-family: 'Fira Code', 'Arial Narrow', Arial, sans-serif !important;
+    font-weight: 300;
+    font-size: 1.25em;
+}
+
+footer {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.bg-image {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #f8f8f8;
+    text-align: center;
+    background: url(../img/bg-image.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.message {
+    font-size: xx-large;
+    color: #fefcff;
+}
+
+.font-white {
+    color: #fff !important;
+}
+
+.prof-input {
+    height: 35%;
+}
+
+.menu-item {
+    background-color: yellow;
+    height: 150px;
+    width: 250px;
+    margin: 20px;
+}
+
+.prof-menu {
+    height: 65%;
+}
+
+table {
+    margin-top: 50px;
+}
+
+*[role="form"] {
+    max-width: 800px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
