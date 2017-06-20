@@ -1,6 +1,7 @@
 """ Module to test the running the application """
 
-from unittest import TestCase
+from flask import url_for
+from flask_testing import TestCase
 
 from ..app import create_app
 
@@ -15,7 +16,11 @@ class TestAppRun(TestCase):
 
     def test_index(self):
         """Test the loading of the homepage"""
-        app = self.create_app()
-        tester = app.test_client(self)
-        response = tester.get('/', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('home.homepage'))
+        self.assert200(response)
+
+    def test_login(self):
+        """Test the loading og login page"""
+        response = self.client.get(url_for('auth.login'))
+        self.assert200(response)
+
