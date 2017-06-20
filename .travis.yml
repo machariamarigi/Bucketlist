@@ -6,4 +6,6 @@ python:
 
 install: "pip install -r requirements.txt"
 
-script: nosetests tests/test_app_run.py
+script: 
+  nosetests tests/test_app_run.py
+  nosetests tests/test_tools.py
