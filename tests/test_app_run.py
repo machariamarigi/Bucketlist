@@ -1,4 +1,5 @@
 """ Module to test the running the application """
+import unittest
 
 from flask import url_for
 from flask_testing import TestCase
@@ -24,6 +25,5 @@ class TestAppRun(TestCase):
         response = self.client.get(url_for('auth.login'))
         self.assert200(response)
 
-
-
-
+if __name__ == '__main__':
+    unittest.main()

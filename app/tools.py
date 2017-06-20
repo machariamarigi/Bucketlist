@@ -1,11 +1,18 @@
 """Module for volatile storage functionality"""
 
+id = 0
 
-class Storage():
+
+class Auth(object):
     """
-        This class contains methods that will execute AUTH and CRUD
-        functionality on our application
+        This class should enable users to be able to sign up and sign into the
+        app
     """
 
-    def sign_up(user):
-        """Method to sign up a user"""
+
+class Storage(object):
+    """
+        This class enables users to perform CRUD operations with their profile
+        and the bucket list
+    """
+    pass
