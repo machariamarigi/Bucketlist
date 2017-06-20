@@ -27,8 +27,9 @@ class TestAuth(unittest.TestCase):
         self.assertTrue(login_user, "User not logged in properly")
 
     def test_wrong_password(self):
-        result = self.auth.login("test@test.com", "testpassword")
-        self.assertEqual(result, False)
+        """Method to test denial of login on wrong password"""
+        login_user = self.auth.login("test@test.com", "testpassword")
+        self.assertFalse(login_user, "User should not log in")
 
 
 if __name__ == '__main__':

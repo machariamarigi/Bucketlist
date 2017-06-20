@@ -13,6 +13,8 @@ class Auth(object):
         self.users = []
 
     def signup(self, email, password):
+        """Method to sign up users"""
+
         user = {
             'id': id + 1,
             'email': email,
@@ -20,6 +22,17 @@ class Auth(object):
         }
 
         self.users.append(user)
+
+    def login(self, email, password):
+        """Method to login users"""
+        for user in self.users:
+            if email in dict.values(user):
+                if password == user['password']:
+                    return True
+                else:
+                    return False
+        else:
+            return False
 
 
 class Storage(object):
