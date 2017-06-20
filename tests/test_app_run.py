@@ -24,3 +24,6 @@ class TestAppRun(TestCase):
         response = self.client.get(url_for('auth.login'))
         self.assert200(response)
 
+
+
+
