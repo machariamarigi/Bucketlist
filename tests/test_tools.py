@@ -20,6 +20,16 @@ class TestAuth(unittest.TestCase):
         added_user = final_users - initial_users
         self.assertEquals(1, added_user, "User was not added")
 
+    def test_login(self):
+        """Method to test if the user logs in properly"""
+        user = self.auth.signup("test@test.com", "test_password")
+        login_user = self.auth.login("test@test.com", "test_password")
+        self.assertTrue(login_user, "User not logged in properly")
+
+    def test_wrong_password(self):
+        result = self.auth.login("test@test.com", "testpassword")
+        self.assertEqual(result, False)
+
 
 if __name__ == '__main__':
     unittest.main
