@@ -5,7 +5,7 @@ from unittest import TestCase
 from ..app import create_app
 
 
-class TestAppRun():
+class TestAppRun(TestCase):
     """Test the running of the application"""
     def create_app(self):
         """Create test instance of the application"""
@@ -16,5 +16,6 @@ class TestAppRun():
     def test_index(self):
         """Test the loading of the homepage"""
         app = self.create_app()
-        tester = app.get('/', content_type='html/text')
+        tester = app.test_client(self)
+        response = tester.get('/', content_type='html/text')
         self.assertEqual(response.status_code, 200)
