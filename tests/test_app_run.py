@@ -4,7 +4,7 @@ import unittest
 from flask import url_for
 from flask_testing import TestCase
 
-from ..app import create_app
+from app import create_app
 
 
 class TestAppRun(TestCase):

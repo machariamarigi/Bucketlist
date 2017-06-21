@@ -3,7 +3,7 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 
-from ..config import app_config
+from config import app_config
 
 
 def create_app(config_name):

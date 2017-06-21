@@ -2,7 +2,7 @@
 
 from unittest import TestCase
 
-from ..app.models import User, Bucketlist, BucketListItem
+from app.models import User, Bucketlist, BucketListItem
 
 
 class TestUserModel(TestCase):
@@ -18,5 +18,5 @@ class TestUserModel(TestCase):
         })
 
 
-class TestBucketList(TestCaes):
+class TestBucketList(TestCase):
     """Class containing trsts for Bucketlist"""
