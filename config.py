@@ -20,6 +20,7 @@ class DevelopConfig(Config):
         Configuration for development
     """
     DEBUG = True
+    SECRET_KEY = "dfth642"
 
 
 class TestingConfig(Config):
