@@ -20,10 +20,15 @@ class TestAppRun(TestCase):
         response = self.client.get(url_for('home.homepage'))
         self.assert200(response)
 
-    def test_login(self):
-        """Test the loading og login page"""
+    def test_login_page_without_auth(self):
+        """Test the loading of login page"""
         response = self.client.get(url_for('auth.login'))
         self.assert200(response)
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_signup_page_without_auth(self):
+        """Test the loading of login page"""
+        response = self.client.get(url_for('auth.signup'))
+        self.assert200(response)
+
+
+
