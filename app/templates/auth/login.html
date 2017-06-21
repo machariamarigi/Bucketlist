@@ -4,6 +4,7 @@
 {% block title %}Login{% endblock %}
 {% block body %}
         <main>
+            {{ utils.flashed_messages()  }}
             {{ wtf.quick_form(form) }}
         </main>
 

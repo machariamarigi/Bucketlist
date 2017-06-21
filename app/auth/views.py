@@ -14,7 +14,6 @@ def login():
     if form.validate_on_submit():
         if form.email.data == session['email']:
             if form.password.data == session['password']:
-                flash('You have successfully registered! You may now login.')
                 print('logged in')
                 return redirect(url_for('auth.login'))
 
