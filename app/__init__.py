@@ -23,6 +23,9 @@ def create_app(config_name):
     from .profile import profile as profile_blueprint
     app.register_blueprint(profile_blueprint)
 
+    from .bucketlist import bucketlist as bucketlist_blueprint
+    app.register_blueprint(bucketlist_blueprint)
+
     @app.errorhandler(404)
     def page_not_found(error):
         return render_template('404.html', title='Page Not Found'), 404

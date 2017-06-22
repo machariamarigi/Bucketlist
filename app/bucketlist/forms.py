@@ -5,5 +5,6 @@ from wtforms.validators import DataRequired
 
 class BucketlistForm(FlaskForm):
     """Form for users to login"""
-    name = StringField('Name', validators=[DataRequired()])
+    title = StringField('Title', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Add')
