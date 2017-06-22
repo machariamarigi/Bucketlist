@@ -26,9 +26,21 @@ class TestAppRun(TestCase):
         self.assert200(response)
 
     def test_signup_page_without_auth(self):
-        """Test the loading of login page"""
+        """Test the loading of signup page"""
         response = self.client.get(url_for('auth.signup'))
         self.assert200(response)
 
-
-
+    def test_login(self):
+        """Test is a user logs in correctly"""
+        sign_up_response = self.client.post(url_for('auth.signup', data={
+            'username': 'test',
+            'first_name': 'Test',
+            'last_name': 'Case',
+            'email': 'test@test.com',
+            'password': 'pass',
+            'confirm_password': 'pass'
+        }))
+        self.assertTrue(sign_up_response.status_code == 302)
+        # response = self.client.post(url_for('auth.login'), data={
+        #     "email": "tes"
+        # })
