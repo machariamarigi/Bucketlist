@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../static/css/main.scss" rel="stylesheet">
-    </head>
-    <body>
-
-        <div class="container-fluid">
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Bucketlist</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav pull-right">
-                        <li><a class="btn btn-default">Profile Settings</button></a>
-                        <li><a class="btn btn-danger font-white">Sign Out</button></a>
-                    </ul>
-                </div>
-            </nav>
-
+{% extends "authbase.html" %}
+{% block title %}Profile{% endblock %}
+{% block body %}
             <main class="container-fluid">
                 <div class="prof-input">
-                    <h1>Hello Username</h1>
+                    <h1>Hello {{ user }}</h1>
                     <form class="container row">
                         <div class="form-group col-md-8 col-md-offset-4">
                             <input class="form-control" placeholder="Add to bucket list" type="text">
@@ -53,21 +28,4 @@
 
                 </div>
             </main>
-
-            <footer class="nav navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-brand pull-left">
-                        Andela Bootcamp
-                    </div>
-                    <div class="navbar-brand pull-right">
-                        &copy;Macharia Marigi
-                    </div>
-
-                </div>
-            </footer>
-        </div>
-    
-    <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    </body>
-</html>
+{% endblock %}
