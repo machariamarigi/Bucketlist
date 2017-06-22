@@ -1,0 +1,4 @@
+{
+  "tests/test_app_run.py::TestAppRun::test_login": true,
+  "tests/test_models.py::TestBucketList::test_create_bucketlist": true
+}
