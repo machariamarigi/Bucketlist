@@ -3,7 +3,6 @@
 from flask import render_template, flash, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 
-import json
 
 from . import auth
 from .forms import SignUpForm, LoginForm
