@@ -25,7 +25,7 @@ class TestBucketList(TestCase):
 
     def test_create_bucketlist(self):
         intial_bucklists = len(self.bucket_list.bucketlists)
-        self.bucket_list.create_bucketlist('Travel', 'Where I want to go')
+        self.bucket_list.create_bucketlist('Travel')
         final_bucketlist = len(self.bucket_list.bucketlists)
         difference = final_bucketlist - intial_bucklists
         self.assertEquals(difference, 1, "Bucketlist is not created")
