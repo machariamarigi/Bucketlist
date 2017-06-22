@@ -38,6 +38,13 @@ def signup():
 
         session['email'] = user_details['email']
         session['password'] = user_details['password']
+        session['username'] = user_details['username']
         flash('You have successfully registered! You may now login.')
         return redirect(url_for('auth.login'))
     return render_template('auth/signup.html', form=form, title='Sign Up')
+
+
+@auth.route('/logout')
+def logout():
+    [session].clear()
+    return redirect(url_for('home.homepage'))
