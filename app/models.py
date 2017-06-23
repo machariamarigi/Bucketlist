@@ -64,24 +64,11 @@ class BucketlistItems(BucketList):
     all_bucketlist_items = []
     items_details = {}
 
-    def create_bucketlist_items(self, key, title, due_date, done):
+    def create_bucketlist_items(self, title, due_date, done):
         """Method used to populate bucketlist with items"""
-        self.items_details[title] = {key: due_date}
+        self.items_details[title] = due_date
         self.all_bucketlist_items.append({
             title: done
         })
 
-    def get_bucketlists_item_detail(self, key):
-        """Return details of an item from the bucketlist"""
-        return self.activity_details[key]
 
-    def update_bucketlist_item(
-            self, key, bucket_title, item_title, due_date, done):
-        """Method to update items into the bucketlist"""
-        self.all_bucketlist_items[key] = {
-            item_title: done}
-
-        self.activity_details[
-            bucketlist_activity_name] = {bucketlist_name: due_date}
-
-        return self.all_bucketlist_items
