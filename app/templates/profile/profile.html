@@ -23,10 +23,10 @@
                         </thead>
                         <tbody> 
                                 {% for bucketlist in bucketlists %}
-                                    {% for key, value in bucketlist.items() %}
-                                        
                                         <tr>
-                                            <th scope="row">{{ loop.index }}</th> 
+                                            <th scope="row">{{ loop.index }}</th>
+                                    {% for key, value in bucketlist.items() %}
+                                         
                                             <td><a href="#">{{ key }}</a></td>
                                             <td><center>{{ value }}</center></td>
                                             <td>
