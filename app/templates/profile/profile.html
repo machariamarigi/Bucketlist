@@ -1,19 +1,50 @@
+{% import "bootstrap/utils.html" as utils %}
 {% extends "authbase.html" %}
 {% block title %}Profile{% endblock %}
 {% block body %}
             <main class="container-fluid">
                 <div class="prof-input">
                     <h1>Hello {{ user }}</h1>
-                    <a class="btn btn-success col-md-4 col-md-offset-4" href="{{ url_for('bucketlist.add_bucketlist') }}" type="submit">Add</a>
+                    <a class="btn btn-success col-md-4 col-md-offset-4" href="{{ url_for('bucketlist.add_bucketlist') }}" type="submit">Add A Bucketlist</a>
                 </div>
                 <hr>
                 <div class="prof-menu">
                     <h2>Bucketlists</h2>
-                    <div class="container menu">
-                        <div class="col-md-4 menu-item">Bucket List 1</div>
+                    {{ utils.flashed_messages()  }}
+                    {% if bucketlists %} 
+                        <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>id</th> 
+                                <th>Title</th>
+                                <th><center>Description</center></th>
+                                <th><center>Actions</center></th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                                {% for bucketlist in bucketlists %}
+                                    {% for key, value in bucketlist.items() %}
+                                        
+                                        <tr>
+                                            <th scope="row">{{ loop.index }}</th> 
+                                            <td><a href="/bucketlist-activities/{{ loop.index }}">{{ key }}</a></td>
+                                            <td><center>{{ value }}</center></td>
+                                            <td>
+                                                <center>
+                                                    <a href="" class="btn btn-primary">Change</a>
+                                                    <a href="" class="btn btn-danger">Delete</a>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endfor %}
+                        </tbody>
+                        </table>
+                    {% else %}
+                    <div class="alert alert-info" role="alert">
+                        <strong>Nothing yet!</strong> Click on the "Add A Bucketlist" to have a new bucketlist
                     </div>
-
-
+                    {% endif %}
                 </div>
             </main>
 {% endblock %}
