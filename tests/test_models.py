@@ -21,7 +21,7 @@ class TestUserModel(TestCase):
 
 
 class TestBucketlistModel(TestCase):
-    """Class containing tests for Bucketlist """
+    """ Class containing tests for Bucketlist """
 
     def setUp(self):
         self.bucketlist_instance = BucketList()
@@ -38,13 +38,13 @@ class TestBucketlistModel(TestCase):
             [{"Holiday": "Let us travel the world"}],
             "Bucketlist not created")
 
-    # def test_edit_bucketlist(self):
-    #     self.bucketlist_instance.clear_bucketlist()
-    #     self.bucketlist_instance.create_bucketlist(
-    #         'Holiday', 'Let us travel the world')
-    #     self.bucketlist_instance.edit_bucketlist(0, 'Sports', 'Visit Anfield')
-    #     self.assertEquals(
-    #         self.bucketlist_instance.get_bucketlists(),
-    #         [{'Sports': 'Visit Anfield'}],
-    #         'Cannot update bucketlist'
-    #     )
+
+class TestBucketlistModel(TestCase):
+    """ Class containing tests for BucketlistItems """
+
+    def setUp(self):
+        self.bucketlistitem_instance = BucketlistItems()
+
+    def test_creation_of_bucketlist_item(self):
+        self.bucketlistitem_instance
+
