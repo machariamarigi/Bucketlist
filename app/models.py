@@ -42,21 +42,10 @@ class BucketList(object):
         """Method to get all the bucketlists"""
         return self.all_bucketlists
 
-    def edit_bucketlist(self, key, title, description):
-        """Edit an existing bucketlis"""
-        edit_bucketlist = self.all_bucketlists[key]
-
-        edit_bucketlist = {title: description}
-        self.all_bucketlists[key]
-        return self.all_bucketlists
-
     def delete_bucketlist(self, key):
         """Method to delete a bucketlist"""
         self.all_bucketlists.pop(key)
         return self.all_bucketlists
-
-    def clear_bucketlist(self):
-        self.all_bucketlists = []
 
 
 class BucketlistItems(BucketList):
