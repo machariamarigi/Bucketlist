@@ -7,14 +7,11 @@ from . import profile
 from ..models import BucketList
 
 
-@profile.route('/profile')
+@profile.route('/profile', methods=['GET', 'POST'])
 def profilepage():
     """Render the homepage template on the / route"""
-
-    user = session['username']
-    return render_template('profile/profile.html', user=user)
-
-
-# @profile.route('/create_bucketlist', methods=['GET', 'POST'])
-# def create_bucketlist():
-    
+    if session['logged_in']:
+        user = session['username']
+        return render_template('profile/profile.html', user=user)
+    else:
+        return render_template('401.html')

@@ -20,11 +20,11 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="{{ url_for('home.about') }}">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
                     <li><a class="btn btn-success font-white" href="{{ url_for('auth.login') }}">Log In</button></a>
-                    <li><a class="btn btn-primary font-white" href="{{ url_for('auth.signup') }}">Sign In</button></a>
+                    <li><a class="btn btn-primary font-white" href="{{ url_for('auth.signup') }}">Sign Up</button></a>
                 </ul>
             </div>
         </nav>
