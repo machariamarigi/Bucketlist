@@ -1,13 +1,13 @@
 """ Module to handle various functionality that our application may need """
 
-from .models import User
+from .models import User, BucketList
 
 
 class Storage():
     """Class will handle volatile storage of the application's data"""
 
     users = [{'email': None, 'password': None, 'username': None, 'id': 0}]
-    bucketlists = []
+    bucketlists = [{'title': None, 'description': None, 'id': 0}]
     bucketlist_items = []
 
     def add_user(self, username, email, password):
@@ -20,12 +20,12 @@ class Storage():
             else:
                 new_user_details['id'] = len(self.users)
                 self.users.append(new_user_details)
-                return True
 
-    def log_in(self, email, password):
-        for user in self.users:
-            if user['email'] == email:
-                if user['password'] == password:
-                    return user
+    def add_bucketlist(self, title, description):
+        new_bucketlist = BucketList(title, description)
+        new_bucketlist_details = new_bucketlist.get_details()
+        new_bucketlist_details['id'] = len(self.bucketlists)
+        self.bucketlists.append(new_bucketlist_details)
+
 
 store = Storage()
