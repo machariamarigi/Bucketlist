@@ -23,29 +23,26 @@ class User(UserMixin):
 
 
 class BucketList(object):
-    """Class modeling a bicket list with CRUD operations"""
-    all_bucketlists = []
+    """Class modeling a bucket list with CRUD operations"""
 
-    def __init__(self):
-        self.bucketlist = {}
-        self.id = 1
-
-    def create_bucketlist(self, title, description):
+    def __init__(self, title, description, items=None):
         """Create bucketlist item"""
+        self.title = title
+        self.description = description
+        if items is None:
+            self.items = []
+        else:
+            self.items = items
 
-        self.bucketlist[title] = description
-        self.all_bucketlists.append({
-            title: description
-        })
+        self.details = {
+            'title': self.title,
+            'description': self.description,
+            'items': self.items
+        }
 
-    def get_bucketlists(self):
+    def get_details(self):
         """Method to get all the bucketlists"""
-        return self.all_bucketlists
-
-    def delete_bucketlist(self, key):
-        """Method to delete a bucketlist"""
-        self.all_bucketlists.pop(key)
-        return self.all_bucketlists
+        return self.details
 
 
 class BucketlistItems(BucketList):
