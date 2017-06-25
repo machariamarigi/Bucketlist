@@ -27,5 +27,8 @@ class Storage():
         new_bucketlist_details['id'] = len(self.bucketlists)
         self.bucketlists.append(new_bucketlist_details)
 
+    def get_bucketlists(self):
+        return self.bucketlists
+
 
 store = Storage()
