@@ -60,4 +60,3 @@ class BucketlistItems(BucketList):
             title: done
         })
 
-
