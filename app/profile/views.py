@@ -11,7 +11,6 @@ from ..models import BucketList
 def profilepage():
     """Render the homepage template on the / route"""
     if session['logged_in']:
-        user = session['username']
-        return render_template('profile/profile.html', user=user)
+        return render_template('profile/profile.html')
     else:
         return render_template('401.html')
