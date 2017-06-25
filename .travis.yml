@@ -8,4 +8,5 @@ install: "pip install -r requirements.txt"
 
 script: 
   pytest 
-after-sucess: coveralls
+after_sucess:
+  - coveralls
