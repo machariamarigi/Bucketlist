@@ -34,3 +34,16 @@ class TestStorage(TestCase):
         final_bucketlists = len(self.test_store.bucketlists)
         self.assertEquals(
             1, initial_bucketlists-final_bucketlists, 'User not created')
+
+    def test_create_bucketlist(self):
+        """Test to see if we can add a new bucketlist"""
+        self.test_store.add_bucketlist('travel', 'visit london')
+        test_bucketlist = self.test_store.get_single_bucketlist(1)
+        self.assertEquals(
+            test_bucketlist,
+            {
+                "id": 1,
+                "title": "travel",
+                "description": "visit london",
+                "items": []
+            }, 'bucketlist not found')

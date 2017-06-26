@@ -29,6 +29,22 @@ def view_bucketlist(id):
         return render_template("bucketlist/bucketlist.html")
 
 
+@bucketlist.route('/bucket_list/edit/<id>', methods=['GET', 'POST'])
+def edit_bucketlist(id):
+    if session['logged_in']:
+        single_bucketlist = store.get_single_bucketlist(int(id))
+        form = BucketlistForm(dict=single_bucketlist)
+        if form.validate_on_submit():
+            single_bucketlist['title'] = form.title.data
+            single_bucketlist['description'] = form.description.data
+            return redirect(url_for('profile.profilepage'))
+        form.title.data = single_bucketlist['title']
+        form.description.data = single_bucketlist['description']
+        return render_template("bucketlist/add_bucketlist.html", form=form)
+    else:
+        render_template('401.html')
+
+
 @bucketlist.route('/bucket_list/delete/<id>', methods=['GET', 'POST'])
 def delete_bucketlist(id):
     if session['logged_in']:
