@@ -23,3 +23,9 @@ def add_bucketlist():
         return render_template("bucketlist/add_bucketlist.html", form=form)
     else:
         render_template('401.html')
+
+
+@bucketlist.route('/bucket_list/<id>', methods=['GET', 'POST'])
+def view_bucketlist(id):
+    if session['logged_in']:
+        return render_template("bucketlist/bucketlist.html")

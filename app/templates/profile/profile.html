@@ -26,7 +26,7 @@
                                     <tr>
                                         <th scope="row">{{ bucketlist['id'] }}</th>
                                         
-                                        <td><a href="#">{{ bucketlist['title'] }}</a></td>
+                                        <td><a href="{{ url_for('bucketlist.view_bucketlist', id=bucketlist['id']) }}">{{ bucketlist['title'] }}</a></td>
                                         <td><center>{{ bucketlist['description'] }}</center></td>
                                         <td>
                                             <center>
