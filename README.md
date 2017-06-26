@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/machariamarigi/Bucketlist.svg?branch=master)](https://travis-ci.org/machariamarigi/Bucketlist)
-
-[![Coverage Status](https://coveralls.io/repos/github/machariamarigi/Bucketlist/badge.svg?branch=master)](https://coveralls.io/github/machariamarigi/Bucketlist?branch=master)
+[![Build Status](https://travis-ci.org/machariamarigi/Bucketlist.svg?branch=master)](https://travis-ci.org/machariamarigi/Bucketlist) [![Coverage Status](https://coveralls.io/repos/github/machariamarigi/Bucketlist/badge.svg?branch=master)](https://coveralls.io/github/machariamarigi/Bucketlist?branch=master)
 
 # Bucketlist
 

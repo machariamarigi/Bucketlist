@@ -1,0 +1,51 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "authbase.html" %}
+{% block title %}Bucketlist{% endblock %}
+{% block body %}
+<main>
+    <h1 class="container">Bucket lists</h1>
+    <button class="btn btn-large btn-primary col-md-offset-4">Add An Item to Bucketlist</button>
+    <div class="container">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date Added</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Buck_1</td>
+                    <td>Desc_1</td>
+                    <td>13th feb 2017</td>
+                    <td>
+                        <button class="btn-default btn">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Buck_2</td>
+                    <td>Desc_3</td>
+                    <td>13th feb 2017</td>
+                    <td>
+                        <button class="btn-default btn">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Buck_3</td>
+                    <td>Desc_3</td>
+                    <td>13th feb 2017</td>
+                    <td>
+                        <button class="btn-default btn">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

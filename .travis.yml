@@ -4,9 +4,12 @@ python:
   - "3.5"
 
 
-install: "pip install -r requirements.txt"
+install: 
+  - pip install -r requirements.txt
+  - pip install coveralls
 
 script: 
-  pytest 
+  - coverage run --source=app -m py.test && coverage report
+  - coveralls
 after_sucess:
   - coveralls

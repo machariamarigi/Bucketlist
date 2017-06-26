@@ -24,27 +24,30 @@ class TestBucketlistModel(TestCase):
     """ Class containing tests for Bucketlist """
 
     def setUp(self):
-        self.bucketlist_instance = BucketList()
+        self.bucketlist_instance = BucketList(
+            'Holiday', 'Let us travel the world')
 
     def tearDown(self):
         del self.bucketlist_instance
 
     def test_creation_of_bucketlist_and_get_bucketlist(self):
 
-        self.bucketlist_instance.create_bucketlist(
-            'Holiday', 'Let us travel the world')
         self.assertEqual(
-            self.bucketlist_instance.get_bucketlists(),
-            [{"Holiday": "Let us travel the world"}],
-            "Bucketlist not created")
+            self.bucketlist_instance.get_details(),
+            {
+                "title": "Holiday",
+                "description": "Let us travel the world",
+                "items": []
+            },
+        )
 
 
-class TestBucketlistModel(TestCase):
-    """ Class containing tests for BucketlistItems """
+# class TestBucketlistModel(TestCase):
+#     """ Class containing tests for BucketlistItems """
 
-    def setUp(self):
-        self.bucketlistitem_instance = BucketlistItems()
+#     def setUp(self):
+#         self.bucketlistitem_instance = BucketlistItems()
 
-    def test_creation_of_bucketlist_item(self):
-        self.bucketlistitem_instance
+#     def test_creation_of_bucketlist_item(self):
+#         self.bucketlistitem_instance
 
