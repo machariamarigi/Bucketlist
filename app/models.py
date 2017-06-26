@@ -1,9 +1,7 @@
 """Module for the application's USER, BUCKETLIST and BUCKETLISTITEMS"""
 
-from flask_login import UserMixin
 
-
-class User(UserMixin):
+class User():
     """Class modeling a real world user"""
 
     def __init__(self, username, email, password):
@@ -56,4 +54,3 @@ class BucketlistItems(BucketList):
         self.all_bucketlist_items.append({
             title: done
         })
-
