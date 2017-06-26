@@ -26,3 +26,11 @@ class TestStorage(TestCase):
         final_bucketlists = len(self.test_store.bucketlists)
         self.assertEquals(
             1, final_bucketlists-initial_bucketlists, 'User not created')
+
+    def test_delete_bucketlist(self):
+        """Test to see whether we can delete a bucketlst"""
+        initial_bucketlists = len(self.test_store.bucketlists)
+        self.test_store.remove_bucketlist(1)
+        final_bucketlists = len(self.test_store.bucketlists)
+        self.assertEquals(
+            1, initial_bucketlists-final_bucketlists, 'User not created')
