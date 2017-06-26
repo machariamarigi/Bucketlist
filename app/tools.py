@@ -30,12 +30,19 @@ class Storage():
     def get_bucketlists(self):
         return self.bucketlists
 
+    def get_single_bucketlist(self, id):
+        for bucketlist in self.bucketlists:
+            if bucketlist['id'] == id:
+                single_bucketlist = bucketlist
+                return single_bucketlist
+
     def remove_bucketlist(self, id):
         del self.bucketlists[id]
 
 
 store = Storage()
 # store.add_bucketlist('mash', 'cool')
+# print(store.get_single_bucketlist(1))
 # store.add_bucketlist('masha', 'coolio')
 # print(store.get_bucketlists())
 # store.remove_bucketlist(1)
