@@ -17,9 +17,7 @@ def add_bucketlist():
             flash('You have succesfully created {} bucketlist'.format(
                 form.title.data))
 
-            return render_template(
-                'profile/profile.html',
-                bucketlists=store.get_bucketlists())
+            return redirect(url_for('profile.profilepage'))
         return render_template("bucketlist/add_bucketlist.html", form=form)
     else:
         render_template('401.html')
@@ -29,3 +27,13 @@ def add_bucketlist():
 def view_bucketlist(id):
     if session['logged_in']:
         return render_template("bucketlist/bucketlist.html")
+
+
+@bucketlist.route('/bucket_list/delete/<id>', methods=['GET', 'POST'])
+def delete_bucketlist(id):
+    if session['logged_in']:
+        store.remove_bucketlist(int(id))
+        return redirect(url_for('profile.profilepage'))
+        return render_template(title="Delete Bucketlist")
+    else:
+        render_template('401.html')
