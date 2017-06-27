@@ -45,12 +45,19 @@ class BucketList(object):
 
 class BucketlistItems(BucketList):
     """Class modeling bucket list items with CRUD operations"""
-    all_bucketlist_items = []
-    items_details = {}
 
-    def create_bucketlist_items(self, title, due_date, done):
-        """Method used to populate bucketlist with items"""
-        self.items_details[title] = due_date
-        self.all_bucketlist_items.append({
-            title: done
-        })
+    def __init__(self, item, duedate, finished=False):
+        """Constructor for a Bucketlist item"""
+        self.item = item
+        self.duedate = duedate
+        self.finished = finished
+
+        self.details = {
+            'item': self.item,
+            'duedate': self.duedate,
+            'finished': self.finished
+        }
+
+    def get_details(self):
+        """Method to get all the bucketlists"""
+        return self.details

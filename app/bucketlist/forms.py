@@ -13,5 +13,5 @@ class BucketlistForm(FlaskForm):
 class BucketlistItem(FlaskForm):
     """Form used to create a bucketlist item"""
     item = StringField('Item', validators=[DataRequired()])
-    due_date = StringField('DueDate', validators=[DataRequired()])
+    due_date = DateField('DueDate', validators=[DataRequired()])
     submit = SubmitField('Add')
