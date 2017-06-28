@@ -61,4 +61,3 @@ class BucketlistItems(BucketList):
     def get_details(self):
         """Method to get all the bucketlists"""
         return self.details
-    
