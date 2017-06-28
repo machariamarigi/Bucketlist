@@ -11,6 +11,7 @@ from ..tools import store
 def add_bucketlist():
     """Render a form to handle the creation of bucketlists"""
     if session['logged_in']:
+        add_bucketlist = True
         form = BucketlistForm()
         if form.validate_on_submit():
             store.add_bucketlist(form.title.data, form.description.data)
@@ -18,7 +19,9 @@ def add_bucketlist():
                 form.title.data))
 
             return redirect(url_for('profile.profilepage'))
-        return render_template("bucketlist/add_bucketlist.html", form=form)
+        return render_template(
+            "bucketlist/add_bucketlist.html",
+            form=form, add_bucketlist=add_bucketlist)
     else:
         render_template('401.html')
 
@@ -32,6 +35,7 @@ def view_bucketlist(id):
 @bucketlist.route('/bucket_list/edit/<id>', methods=['GET', 'POST'])
 def edit_bucketlist(id):
     if session['logged_in']:
+        add_bucketlist = False
         single_bucketlist = store.get_single_bucketlist(int(id))
         form = BucketlistForm(dict=single_bucketlist)
         if form.validate_on_submit():
@@ -40,7 +44,9 @@ def edit_bucketlist(id):
             return redirect(url_for('profile.profilepage'))
         form.title.data = single_bucketlist['title']
         form.description.data = single_bucketlist['description']
-        return render_template("bucketlist/add_bucketlist.html", form=form)
+        return render_template(
+            "bucketlist/add_bucketlist.html",
+            form=form, add_bucketlist=add_bucketlist)
     else:
         render_template('401.html')
 
