@@ -1,0 +1,22 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "authbase.html" %}
+
+{% block title %}
+    {% if add_bucketlist_item %}
+        Add Goal
+    {% else %}
+        Edit Goal
+    {% endif %}
+
+{% endblock %}
+{% block body %}
+        <main>
+        {% if add_bucketlis_itemt %}
+            <h1 class="text-center">Add Bucketlist Goal</h1>
+        {% else %}
+            <h1 class="text-center">Edit Bucketlist Goal</h1>
+        {% endif %}
+            {{ wtf.quick_form(form) }}
+        </main>
+{% endblock %}

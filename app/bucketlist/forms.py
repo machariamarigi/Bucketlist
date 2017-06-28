@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, ValidationError, SubmitField, DateField
+from wtforms import StringField, ValidationError, SubmitField
+from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
 
 
@@ -10,8 +11,9 @@ class BucketlistForm(FlaskForm):
     submit = SubmitField('Add')
 
 
-class BucketlistItem(FlaskForm):
+class BucketlistItemForm(FlaskForm):
     """Form used to create a bucketlist item"""
     item = StringField('Item', validators=[DataRequired()])
-    due_date = DateField('DueDate', validators=[DataRequired()])
+    due_date = DateField(
+        'DueDate', validators=[DataRequired()], format='%Y-%d-%m')
     submit = SubmitField('Add')
