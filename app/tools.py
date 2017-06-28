@@ -1,6 +1,6 @@
 """ Module to handle various functionality that our application may need """
 
-from .models import User, BucketList
+from .models import User, BucketList, BucketlistItems
 
 
 class Storage():
@@ -8,7 +8,6 @@ class Storage():
 
     users = [{'email': None, 'password': None, 'username': None, 'id': 0}]
     bucketlists = [{'title': None, 'description': None, 'id': 0}]
-    bucketlist_items = []
 
     def add_user(self, username, email, password):
         new_user = User(username, email, password)
@@ -39,11 +38,11 @@ class Storage():
     def remove_bucketlist(self, id):
         del self.bucketlists[id]
 
+    def add_bucketlist_item(self, bucketist_id, item, duedate):
+        new_bucketlist_item = BucketlistItems(item, duedate)
+        new_bucketlist_item_details = new_bucketlist_item.get_details()
+        bucketlist = self.get_single_bucketlist(bucketist_id)
+        bucketlist['items'].append(new_bucketlist_item_details)
+
 
 store = Storage()
-# store.add_bucketlist('mash', 'cool')
-# print(store.get_single_bucketlist(1))
-# store.add_bucketlist('masha', 'coolio')
-# print(store.get_bucketlists())
-# store.remove_bucketlist(1)
-# print(store.get_bucketlists())
