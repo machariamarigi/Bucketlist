@@ -4,46 +4,35 @@
 {% block title %}Bucketlist{% endblock %}
 {% block body %}
 <main>
-    <h1 class="container">Bucket lists</h1>
-    <button class="btn btn-large btn-primary col-md-offset-4">Add An Item to Bucketlist</button>
+    <h1 class="container">Bucket list: {{ bucketlist['title'] }}</h1>
+    <br>
+    <a class="btn btn-large btn-primary col-md-offset-5" href="{{ url_for('bucketlist.add_bucketlist_item', id=bucketlist['id']) }}">Add An Item to Bucketlist</a>
     <div class="container">
-        <table class="table table-condensed">
+        <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date Added</th>
-                    <th></th>
+                    <th>id</th> 
+                    <th>Goal</th>
+                    <th><center>Due Date</center></th>
+                    <th><center>Actions</center></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Buck_1</td>
-                    <td>Desc_1</td>
-                    <td>13th feb 2017</td>
-                    <td>
-                        <button class="btn-default btn">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Buck_2</td>
-                    <td>Desc_3</td>
-                    <td>13th feb 2017</td>
-                    <td>
-                        <button class="btn-default btn">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Buck_3</td>
-                    <td>Desc_3</td>
-                    <td>13th feb 2017</td>
-                    <td>
-                        <button class="btn-default btn">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+            <tbody> 
+                    {% for item in items %}
+                        <tr>
+                            <th scope="row">{{ item['id'] }}</th>
+                            
+                            <td>{{ item['item'] }}</td>
+                            <td><center>{{ item['duedate'] }}</center></td>
+                            <td>
+                                <center>
+                                    <a href="" class="btn btn-primary">Change</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="" class="btn btn-success">Done?</a>
+                                </center>
+                            </td>
+                            </tr>
+                    {% endfor %}
             </tbody>
         </table>
     </div>

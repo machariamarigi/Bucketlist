@@ -1,5 +1,6 @@
 """ Module to handle various functionality that our application may need """
 
+
 from .models import User, BucketList, BucketlistItems
 
 
@@ -42,6 +43,8 @@ class Storage():
         new_bucketlist_item = BucketlistItems(item, duedate)
         new_bucketlist_item_details = new_bucketlist_item.get_details()
         bucketlist = self.get_single_bucketlist(bucketist_id)
+
+        new_bucketlist_item_details['id'] = len(bucketlist['items'])
         bucketlist['items'].append(new_bucketlist_item_details)
 
 
