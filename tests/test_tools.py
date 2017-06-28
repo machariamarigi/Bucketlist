@@ -35,15 +35,26 @@ class TestStorage(TestCase):
         self.assertEquals(
             1, initial_bucketlists-final_bucketlists, 'User not created')
 
-    def test_create_bucketlist(self):
-        """Test to see if we can add a new bucketlist"""
+    def test_get_bucketlist(self):
+        """Test to see if we can add a return an bucketlist"""
         self.test_store.add_bucketlist('travel', 'visit london')
-        test_bucketlist = self.test_store.get_single_bucketlist(1)
+        test_bucketlist = self.test_store.get_single_bucketlist(2)
         self.assertEquals(
             test_bucketlist,
             {
-                "id": 1,
+                "id": 2,
                 "title": "travel",
                 "description": "visit london",
                 "items": []
             }, 'bucketlist not found')
+
+    def test_add_bucketlist_item(self):
+        self.test_store.add_bucketlist('travel', 'visit london')
+        test_bucketlist = self.test_store.get_single_bucketlist(1)
+        # import pdb; pdb.set_trace()
+        initial_bucketlist_items = len(test_bucketlist['items'])
+        self.test_store.add_bucketlist_item(1, "Tour Big Ben", "12 Nov 2017")
+        final_bucketlist_items = len(test_bucketlist['items'])
+        self.assertEquals(
+            1, final_bucketlist_items-initial_bucketlist_items,
+            'Bucketlist item not created properly')

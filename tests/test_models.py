@@ -49,7 +49,7 @@ class TestBucketlistModel(TestCase):
         self.bucketlistitem_instance = BucketlistItems(
             "Cook a pizza", "12th Nov 2017")
 
-    def test_instance_of_bucketlist_item_and_get_bucketlistitems(self):
+    def test_instance_of_bucketlist_item_and_get_bucketlist_item(self):
         self.assertEqual(
             self.bucketlistitem_instance.get_details(),
             {
