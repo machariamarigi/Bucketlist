@@ -1,9 +1,7 @@
 """Module for the application's USER, BUCKETLIST and BUCKETLISTITEMS"""
 
-from flask_login import UserMixin
 
-
-class User(UserMixin):
+class User():
     """Class modeling a real world user"""
 
     def __init__(self, username, email, password):
@@ -13,18 +11,53 @@ class User(UserMixin):
         self.password = password
 
         self.details = {
-            'username': username,
-            'email': email,
-            'password': password
+            'username': self.username,
+            'email': self.email,
+            'password': self.password
         }
 
     def get_details(self):
         return self.details
 
 
-class Bucketlist(object):
-    """Class modeling a bucket list"""
+class BucketList(object):
+    """Class modeling a bucket list with CRUD operations"""
+
+    def __init__(self, title, description, items=None):
+        """Create bucketlist item"""
+        self.title = title
+        self.description = description
+        if items is None:
+            self.items = []
+        else:
+            self.items = items
+
+        self.details = {
+            'title': self.title,
+            'description': self.description,
+            'items': self.items
+        }
+
+    def get_details(self):
+        """Method to return the bucketlist details"""
+        return self.details
 
 
-class BucketListItem(object):
-    """Class modeling items in a bucketlist item"""
+class BucketlistItems(BucketList):
+    """Class modeling bucket list items with CRUD operations"""
+
+    def __init__(self, item, duedate, finished=False):
+        """Constructor for a Bucketlist item"""
+        self.item = item
+        self.duedate = duedate
+        self.finished = finished
+
+        self.details = {
+            'item': self.item,
+            'duedate': self.duedate,
+            'finished': self.finished
+        }
+
+    def get_details(self):
+        """Method to return the bucketlist item details"""
+        return self.details

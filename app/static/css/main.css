@@ -31,6 +31,15 @@ footer {
     background-size: cover;
 }
 
+.bg-image2 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: black !important;
+    text-align: center;
+    background: url(../img/bg2_image.jpg) no-repeat center center;
+    background-size: cover;
+}
+
 .message {
     font-size: xx-large;
     color: #fefcff;

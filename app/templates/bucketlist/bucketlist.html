@@ -1,0 +1,52 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "authbase.html" %}
+{% block title %}Bucketlist{% endblock %}
+{% block body %}
+<main>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-md-6">Add goals to Bucket list: {{ bucketlist['title'] }}</h1>
+            <a class="btn btn-large btn-success col-md-3 col-md-offset-3" href="{{ url_for('profile.profilepage') }}">View All Bucketlists</a>
+        </div>
+        <br>
+    </div>
+    <a class="btn btn-large btn-primary col-md-offset-5" href="{{ url_for('bucketlist.add_bucketlist_item', id=bucketlist['id']) }}">Add A Goal</a>
+    <hr>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th> 
+                    <th>Goal</th>
+                    <th><center>Due Date</center></th>
+                    <th><center>Actions</center></th>
+                </tr>
+            </thead>
+            <tbody> 
+                    {% for item in items %}
+                        
+                        <tr>
+                            <th scope="row">{{ item['id'] }}</th>
+                            
+                            <td>{% if item['finished'] %} <strike> {%  endif %}{{ item['item'] }}{% if item['finished'] %} </strike> {%  endif %}</td>
+                            <td><center>{% if item['finished'] %} <strike> {%  endif %}{{ item['duedate'] }}{% if item['finished'] %} </strike> {%  endif %}</center></td>
+                            <td>
+                            
+                                <center class="text-success">
+                                    {% if item['finished'] %}
+                                         Goal Achieved
+                                    {% else %}
+                                        <a href="{{ url_for('bucketlist.finish_bucketlist_item', b_id=bucketlist['id'] , bi_id=item['id']) }}" class="btn btn-success">Done?</a>
+                                    {%  endif %}
+                                    <a href="{{ url_for('bucketlist.edit_bucketlist_item', b_id=bucketlist['id'] , bi_id=item['id']) }}" class="btn btn-primary">Change</a>
+                                    <a href="{{ url_for('bucketlist.delete_bucketlist_item', b_id=bucketlist['id'] , bi_id=item['id']) }}" class="btn btn-danger">Delete</a>
+                                </center>
+                            </td>
+                            </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

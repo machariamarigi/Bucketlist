@@ -8,8 +8,6 @@ from wtforms.validators import DataRequired, Email, EqualTo
 class SignUpForm(FlaskForm):
     """Form for users to sign up"""
     username = StringField('Username', validators=[DataRequired()])
-    first_name = StringField('First Name', validators=[DataRequired()])
-    last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[
                                                 DataRequired(),
