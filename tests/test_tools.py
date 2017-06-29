@@ -62,8 +62,8 @@ class TestStorage(TestCase):
 
     def test_get_bucketlist_item(self):
         self.test_store.add_bucketlist('travel', 'visit london')
-        self.test_store.add_bucketlist_item(2, "Tour Big Ben", "12 Nov 2017")
-        test_item = self.test_store.get_bucketlist_item(2, 1)
+        self.test_store.add_bucketlist_item(3, "Tour Big Ben", "12 Nov 2017")
+        test_item = self.test_store.get_bucketlist_item(3, 1)
         self.assertEquals(
             test_item,
             {
@@ -72,4 +72,18 @@ class TestStorage(TestCase):
                 "duedate": "12 Nov 2017",
                 "finished": False
             }, "Item not found"
+        )
+
+    def test_delete_bucketlist_item(self):
+        """Test to see whether we can delete a bucketlst"""
+        self.test_store.add_bucketlist('travel', 'visit london')
+        self.test_store.add_bucketlist_item(2, "Tour Big Ben", "12 Nov 2017")
+        test_bucketlist = self.test_store.get_single_bucketlist(2)
+        initial_bucketlist_items = len(test_bucketlist['items'])
+        self.test_store.remove_bucketlist_item(2, 1)
+        final_bucketlist_items = len(test_bucketlist['items'])
+        self.assertEquals(
+            1,
+            initial_bucketlist_items-final_bucketlist_items,
+            'Items not removed'
         )

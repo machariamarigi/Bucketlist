@@ -111,3 +111,13 @@ def edit_bucketlist_item(b_id, bi_id):
             form=form, add_bucketlist_item=add_bucketlist_item)
     else:
         render_template('401.html')
+
+
+@bucketlist.route('/bucketlist/delete/<b_id>/<bi_id>', methods=['GET', 'POST'])
+def delete_bucketlist_item(b_id, bi_id):
+    if session['logged_in']:
+        store.remove_bucketlist_item(int(b_id), int(bi_id))
+        return redirect(url_for('bucketlist.view_bucketlist', id=b_id))
+        return render_template(title="Delete Bucketlist Item")
+    else:
+        render_template('401.html')
