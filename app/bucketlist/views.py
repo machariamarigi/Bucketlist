@@ -15,8 +15,6 @@ def add_bucketlist():
         form = BucketlistForm()
         if form.validate_on_submit():
             store.add_bucketlist(form.title.data, form.description.data)
-            flash('You have succesfully created {} bucketlist'.format(
-                form.title.data))
 
             return redirect(url_for('profile.profilepage'))
         return render_template(
@@ -80,9 +78,7 @@ def add_bucketlist_item(id):
                 form.item.data,
                 form.due_date.data
             )
-            flash('You have succesfully created {} goal'.format(
-                form.item.data)
-            )
+
             return redirect(url_for('bucketlist.view_bucketlist', id=id))
         return render_template(
             "bucketlist/add_bucketlist_item.html",
@@ -119,5 +115,15 @@ def delete_bucketlist_item(b_id, bi_id):
         store.remove_bucketlist_item(int(b_id), int(bi_id))
         return redirect(url_for('bucketlist.view_bucketlist', id=b_id))
         return render_template(title="Delete Bucketlist Item")
+    else:
+        render_template('401.html')
+
+
+@bucketlist.route('/bucketlist/finish/<b_id>/<bi_id>', methods=['GET', 'POST'])
+def finish_bucketlist_item(b_id, bi_id):
+    if session['logged_in']:
+        store.finish_bucketlist_item(int(b_id), int(bi_id))
+        return redirect(url_for('bucketlist.view_bucketlist', id=b_id))
+        return render_template(title="Finish Bucketlist Item")
     else:
         render_template('401.html')
