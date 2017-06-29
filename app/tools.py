@@ -53,6 +53,15 @@ class Storage():
                 single_item = item
                 return single_item
 
+    def finish_bucketlist_item(self, bucketlist_id, item_id):
+        single_bucketlist_item = self.get_bucketlist_item(
+            bucketlist_id, item_id
+        )
+        if single_bucketlist_item['finished']:
+            single_bucketlist_item['finshed'] = False
+        elif not single_bucketlist_item['finished']:
+            single_bucketlist_item['finished'] = True
+
     def remove_bucketlist_item(self, bucketlist_id, item_id):
         single_bucketlist = self.get_single_bucketlist(bucketlist_id)
         del single_bucketlist['items'][item_id-1]
