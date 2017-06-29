@@ -43,9 +43,15 @@ class Storage():
         new_bucketlist_item = BucketlistItems(item, duedate)
         new_bucketlist_item_details = new_bucketlist_item.get_details()
         bucketlist = self.get_single_bucketlist(bucketist_id)
-
-        new_bucketlist_item_details['id'] = len(bucketlist['items'])
+        new_bucketlist_item_details['id'] = len(bucketlist['items']) + 1
         bucketlist['items'].append(new_bucketlist_item_details)
+
+    def get_bucketlist_item(self, bucketlist_id, item_id):
+        single_bucketlist = self.get_single_bucketlist(bucketlist_id)
+        for item in single_bucketlist['items']:
+            if item['id'] == item_id:
+                single_item = item
+                return single_item
 
 
 store = Storage()
