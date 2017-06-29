@@ -39,7 +39,7 @@ class BucketList(object):
         }
 
     def get_details(self):
-        """Method to get all the bucketlists"""
+        """Method to return the bucketlist details"""
         return self.details
 
 
@@ -59,5 +59,5 @@ class BucketlistItems(BucketList):
         }
 
     def get_details(self):
-        """Method to get all the bucketlists"""
+        """Method to return the bucketlist item details"""
         return self.details

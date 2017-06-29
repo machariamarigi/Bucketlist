@@ -49,6 +49,7 @@ class TestStorage(TestCase):
             }, 'bucketlist not found')
 
     def test_add_bucketlist_item(self):
+        """Test for adding bucketlist item functionality"""
         self.test_store.add_bucketlist('travel', 'visit london')
         test_bucketlist = self.test_store.get_single_bucketlist(1)
         # import pdb; pdb.set_trace()
@@ -58,3 +59,17 @@ class TestStorage(TestCase):
         self.assertEquals(
             1, final_bucketlist_items-initial_bucketlist_items,
             'Bucketlist item not created properly')
+
+    def test_get_bucketlist_item(self):
+        self.test_store.add_bucketlist('travel', 'visit london')
+        self.test_store.add_bucketlist_item(2, "Tour Big Ben", "12 Nov 2017")
+        test_item = self.test_store.get_bucketlist_item(2, 1)
+        self.assertEquals(
+            test_item,
+            {
+                "id": 1,
+                "item": "Tour Big Ben",
+                "duedate": "12 Nov 2017",
+                "finished": False
+            }, "Item not found"
+        )

@@ -75,13 +75,39 @@ def add_bucketlist_item(id):
         view_bucketlist = store.get_single_bucketlist(int(id))
         form = BucketlistItemForm()
         if form.validate_on_submit():
-            store.add_bucketlist_item(int(id), form.item.data, form.due_date.data)
+            store.add_bucketlist_item(
+                int(id),
+                form.item.data,
+                form.due_date.data
+            )
             flash('You have succesfully created {} goal'.format(
-                form.item.data))
+                form.item.data)
+            )
             return redirect(url_for('bucketlist.view_bucketlist', id=id))
         return render_template(
             "bucketlist/add_bucketlist_item.html",
-            form=form, add_bucketlist_item=add_bucketlist_item,
-            bucketlist=view_bucketlist)
+            form=form,
+            add_bucketlist_item=add_bucketlist_item,
+            bucketlist=view_bucketlist
+        )
+    else:
+        render_template('401.html')
+
+
+@bucketlist.route('/bucketlis_item/edit/<b_id>/<bi_id>', methods=['GET', 'POST'])
+def edit_bucketlist_item(b_id, bi_id):
+    if session['logged_in']:
+        add_bucketlist_item = False
+        single_bucketlist = store.get_bucketlist_item(int(b_id), int(bi_id))
+        form = BucketlistItemForm(dict=single_bucketlist)
+        if form.validate_on_submit():
+            single_bucketlist['item'] = form.item.data
+            single_bucketlist['duedate'] = form.due_date.data
+            return redirect(url_for('bucketlist.view_bucketlist', id=b_id))
+        form.item.data = single_bucketlist['item']
+        form.due_date.data = single_bucketlist['duedate']
+        return render_template(
+            "bucketlist/add_bucketlist.html",
+            form=form, add_bucketlist_item=add_bucketlist_item)
     else:
         render_template('401.html')
