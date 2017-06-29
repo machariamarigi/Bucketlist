@@ -53,5 +53,9 @@ class Storage():
                 single_item = item
                 return single_item
 
+    def remove_bucketlist_item(self, bucketlist_id, item_id):
+        single_bucketlist = self.get_single_bucketlist(bucketlist_id)
+        del single_bucketlist['items'][item_id-1]
+
 
 store = Storage()

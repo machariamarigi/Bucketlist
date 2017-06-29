@@ -33,8 +33,8 @@
                             <td>
                                 <center>
                                     <a href="{{ url_for('bucketlist.edit_bucketlist_item', b_id=bucketlist['id'] , bi_id=item['id']) }}" class="btn btn-primary">Change</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
                                     <a href="" class="btn btn-success">Done?</a>
+                                    <a href="{{ url_for('bucketlist.delete_bucketlist_item', b_id=bucketlist['id'] , bi_id=item['id']) }}" class="btn btn-danger">Delete</a>
                                 </center>
                             </td>
                             </tr>
