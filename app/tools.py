@@ -12,6 +12,7 @@ class Storage():
 
     def add_user(self, username, email, password):
         """Method to register users to the application"""
+
         new_user = User(username, email, password)
         new_user_details = new_user.get_details()
         for user in self.users:
@@ -77,6 +78,7 @@ class Storage():
         single_bucketlist_item = self.get_bucketlist_item(
             bucketlist_id,
             item_id
+
         )
         if single_bucketlist_item['finished']:
             single_bucketlist_item['finshed'] = False

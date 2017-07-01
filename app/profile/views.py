@@ -13,6 +13,7 @@ def profilepage():
     if session['logged_in']:
         all_bucketlists = store.get_bucketlists()
         bucketlists = all_bucketlists[1:]
+
         return render_template('profile/profile.html', bucketlists=bucketlists)
     else:
         return render_template('401.html')

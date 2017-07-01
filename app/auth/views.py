@@ -24,6 +24,8 @@ def login():
                             'profile.profilepage',
                             logged_in_user=logged_in_user['username']))
 
+
+
     return render_template('auth/login.html', title='login', form=form)
 
 
