@@ -3,7 +3,8 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block body %}
-        <main>
+        <main class="container">
+            <h1 class="text-center">Log In Form</h1>
             {{ utils.flashed_messages()  }}
             {{ wtf.quick_form(form) }}
         </main>
