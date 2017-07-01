@@ -13,6 +13,7 @@ class ProductionConfig(Config):
         Configuration for production
     """
     DEBUG = False
+    SECRET_KEY = "dfth646fd6f2"
 
 
 class DevelopConfig(Config):
@@ -36,5 +37,5 @@ class TestingConfig(Config):
 app_config = {
     'production': ProductionConfig(),
     'testing': TestingConfig(),
-    'development': DevelopConfig()
+    'development': DevelopConfig(),
 }

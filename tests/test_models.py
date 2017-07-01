@@ -42,12 +42,20 @@ class TestBucketlistModel(TestCase):
         )
 
 
-# class TestBucketlistModel(TestCase):
-#     """ Class containing tests for BucketlistItems """
+class TestBucketlistModel(TestCase):
+    """ Class containing tests for BucketlistItems """
 
-#     def setUp(self):
-#         self.bucketlistitem_instance = BucketlistItems()
+    def setUp(self):
+        self.bucketlistitem_instance = BucketlistItems(
+            "Cook a pizza", "12th Nov 2017")
 
-#     def test_creation_of_bucketlist_item(self):
-#         self.bucketlistitem_instance
+    def test_instance_of_bucketlist_item_and_get_bucketlist_item(self):
+        self.assertEqual(
+            self.bucketlistitem_instance.get_details(),
+            {
+                'item': "Cook a pizza",
+                'duedate': "12th Nov 2017",
+                'finished': False
+            }
+        )
 
