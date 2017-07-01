@@ -51,14 +51,10 @@ footer {
 
 .prof-input {
     height: 35%;
+    background-color: #D3D3D3;
+    border-radius: 0.3em;
 }
 
-.menu-item {
-    background-color: yellow;
-    height: 150px;
-    width: 250px;
-    margin: 20px;
-}
 
 .prof-menu {
     height: 65%;
@@ -74,6 +70,7 @@ table {
     margin: 0 auto;
     background-color: #fff;
     border-radius: 0.3em;
+    border: 2px solid black
 }
 
 *[role="form"] h2 {

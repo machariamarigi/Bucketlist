@@ -3,34 +3,39 @@
 {% block title %}Profile{% endblock %}
 {% block body %}
             <main class="container-fluid">
-                <div class="prof-input">
-                    <h1>Hello</h1>
-                    <a class="btn btn-success col-md-4 col-md-offset-4" href="{{ url_for('bucketlist.add_bucketlist') }}" type="submit">Add A Bucketlist</a>
+                <div class="prof-input container">
+                    <h1>Hi, </h1>
+                    <br>
+                    <p class="text-center">
+                        Have you thought of a new bucketlist?
+                    </p>
+                    <a class="btn btn-success col-md-4 col-md-offset-4" href="{{ url_for('bucketlist.add_bucketlist') }}" type="submit">Add That Bucketlist</a>
                 </div>
-                <hr>
-                <div class="prof-menu">
-                    <h2>Bucketlists</h2>
+                <br>
+                <div class="prof-menu container">
                     {% if bucketlists %} 
-                        <table class="table table-striped">
+                        <h2 class="text-center">Bucketlists</h2>
+                        <table class="table table-striped table-condensed table-bordered">
                             <thead>
                                 <tr>
-                                    <th>id</th> 
                                     <th>Title</th>
                                     <th><center>Description</center></th>
                                     <th><center>Actions</center></th>
                                 </tr>
                             </thead>
                             <tbody> 
-                                    {% for bucketlist in bucketlists[1:] %}
-                                        <tr>
-                                            <th scope="row">{{ bucketlist['id'] }}</th>
-                                            
+                                    {% for bucketlist in bucketlists %}
+                                        <tr>                                          
                                             <td><a href="{{ url_for('bucketlist.view_bucketlist', id=bucketlist['id']) }}">{{ bucketlist['title'] }}</a></td>
                                             <td><center>{{ bucketlist['description'] }}</center></td>
                                             <td>
                                                 <center>
-                                                    <a href="{{ url_for('bucketlist.edit_bucketlist', id=bucketlist['id']) }}" class="btn btn-primary">Change</a>
-                                                    <a href="{{ url_for('bucketlist.delete_bucketlist', id=bucketlist['id']) }}" class="btn btn-danger">Delete</a>
+                                                    <a href="{{ url_for('bucketlist.edit_bucketlist', id=bucketlist['id']) }}" class="btn btn-primary">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Change
+                                                    </a>
+                                                    <a href="{{ url_for('bucketlist.delete_bucketlist', id=bucketlist['id']) }}" class="btn btn-danger">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+                                                    </a>
                                                 </center>
                                             </td>
                                             </tr>
@@ -39,7 +44,7 @@
                         </table>
                     {% else %}
                     <div class="alert alert-info" role="alert">
-                        You do not have any bucketlists. Click on the "Add A Bucketlist" buton to create a new bucketlist
+                        You do not have any bucketlists. Click on the "Add That Bucketlist" button to create a new bucketlist
                     </div>
                     {% endif %}
                 </div>
