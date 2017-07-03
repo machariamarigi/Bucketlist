@@ -23,10 +23,8 @@ def login():
                         url_for(
                             'profile.profilepage',
                             logged_in_user=logged_in_user['username']))
-                else:
-                    flash('Ensure that you are a registered user')
-            else:
-                flash('Ensure that you are a registered user')
+
+
 
     return render_template('auth/login.html', title='login', form=form)
 

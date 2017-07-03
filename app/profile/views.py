@@ -11,7 +11,9 @@ from ..tools import store
 def profilepage():
     """Render the homepage template on the / route"""
     if session['logged_in']:
-        bucketlists = store.get_bucketlists()
+        all_bucketlists = store.get_bucketlists()
+        bucketlists = all_bucketlists[1:]
+
         return render_template('profile/profile.html', bucketlists=bucketlists)
     else:
         return render_template('401.html')
